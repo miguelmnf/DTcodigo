@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MiguelDesafioTecnico.Controllers.GeraPdf>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<center> <h2>Controle de receitas e despesas</h2> </center>
+
+<table class="table">
+  <!-- <tr>
+        <th></th>
+    </tr>  --> 
+
+@foreach (var item in Model)
+{
+  <!-- <tr>
+        <td> 
+        </td>
+        <td> 
+        </td>
+        <td></td>
+    </tr>  --> 
+}
+
+</table>
+<h3>--------------------------------------------------------------------------------------</h3>
+<h5>Tipo - Receitas</h5>
+<p>
+    @Html.Action("Index", "Receita", null)
+</p>
+<h3>--------------------------------------------------------------------------------------</h3>
+<div>
+    @using (Html.BeginForm("Index", "GeraPdf", FormMethod.Get))
+    {
+        <text>TOTAL GERAL  - </text> @Html.Label("receitas", (string)ViewBag.TotalReceitas)
+    }
+</div>
+<h3>--------------------------------------------------------------------------------------</h3>
+<h5>Tipo - Despesas</h5>
+<p>
+    @Html.Action("Index", "Despesa", null)
+</p>
+<h3>--------------------------------------------------------------------------------------</h3>
+<div>
+    @using (Html.BeginForm("Index", "GeraPdf", FormMethod.Get))
+    {
+        <text>TOTAL GERAL  - </text> @Html.Label("despesas", (string)ViewBag.TotalDespesas)
+    }
+</div>
+<h3>--------------------------------------------------------------------------------------</h3>
+<div>
+    @using (Html.BeginForm("Index", "Receitas", FormMethod.Get))
+    {
+        <text>Observação  - </text> @Html.Label("msg", (string)ViewBag.Msg)
+    }
+</div>

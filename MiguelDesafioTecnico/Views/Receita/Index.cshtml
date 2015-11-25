@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MiguelDesafioTecnico.Models.Receita>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @using (Html.BeginForm("Index", "Receita", FormMethod.Get))
+    {
+        <text>DATA  </text>@Html.DropDownList("data", new SelectList(ViewBag.Data))
+        <text>CATEGORIA   </text>@Html.DropDownList("categoria", new SelectList(ViewBag.Categoria))
+        <input type="submit" value="filtrar" />
+    }
+</p>
+<h2></h2>
+
+<p>
+    @Html.ActionLink("INSERIR", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacao)
+        </td>
+        <td>
+            @Html.ActionLink("EDITAR", "Edit", new { id=item.ReceitaId }) |
+            @Html.ActionLink("VER", "Details", new { id=item.ReceitaId }) |
+            @Html.ActionLink("EXCLUIR", "Delete", new { id=item.ReceitaId })
+        </td>
+    </tr>
+}
+
+</table>
+

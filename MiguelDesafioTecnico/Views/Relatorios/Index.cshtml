@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MiguelDesafioTecnico.Models.Relatorio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>RELATORIO DE RECEITAS E DESPESAS</h2>
+
+<table class="table">
+ <!--  <tr>
+        <th></th>
+    </tr> --> 
+
+@foreach (var item in Model)
+{
+  <!-- <tr>
+
+        <td>
+           
+        </td>
+
+        <td>
+            
+        </td>
+        <td></td>
+    </tr>  --> 
+}
+
+</table>
+<h3>--------------------------------------------------------------------------------------</h3>
+<h5>Tipo - Receitas</h5>
+<p>
+    @Html.Action("Index", "Receita", null)
+</p>
+<h3>--------------------------------------------------------------------------------------</h3>
+<div>
+    @using (Html.BeginForm("Index", "Relatorios", FormMethod.Get))
+    {
+        <text>TOTAL GERAL  - </text> @Html.Label("receitas", (string)ViewBag.TotalReceitas)
+    }
+</div>
+<h3>--------------------------------------------------------------------------------------</h3>
+<h5>Tipo - Despesas</h5>
+<p>
+    @Html.Action("Index", "Despesa", null)
+</p>
+<h3>--------------------------------------------------------------------------------------</h3>
+<div>
+    @using (Html.BeginForm("Index", "Relatorios", FormMethod.Get))
+    {
+        <text>TOTAL GERAL  - </text> @Html.Label("despesas", (string)ViewBag.TotalDespesas)
+    }
+</div>
+<h3>--------------------------------------------------------------------------------------</h3>
+<div>
+    @using (Html.BeginForm("Index", "Receitas", FormMethod.Get))
+    {
+        <text>Observação  - </text> @Html.Label("msg", (string)ViewBag.Msg)
+    }
+</div>
